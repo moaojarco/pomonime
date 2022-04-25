@@ -1,10 +1,12 @@
+import { Settings, Timer } from "./components";
+import styles from "./App.module.scss";
+import { useState } from "react";
+
 function App() {
+  const [showSettings, setShowSettings] = useState(false);
+
   return (
-    <div className="App">
-      <header>
-        <h1>Hello world</h1>
-      </header>
-    </div>
+    <div className={styles.root}>{showSettings ? <Settings /> : <Timer />}</div>
   );
 }
 

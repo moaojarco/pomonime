@@ -1,0 +1,29 @@
+button {
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  display: inline-block;
+  width: 50px;
+}
+
+button.with-text {
+  display: flex;
+  align-items: center;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  transition: all 500ms ease;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+button.with-text > span {
+  font-size: 0.8rem;
+}
+
+button.with-text > svg {
+  width: 36px;
+}
