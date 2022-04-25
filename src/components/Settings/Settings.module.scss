@@ -1,0 +1,45 @@
+$red: #f54e4e;
+$green: #4ecf7c;
+
+.root {
+  width: 60vw;
+  height: 100vh;
+  padding: 1rem;
+  text-align: left;
+  color: #eee;
+}
+
+.slider {
+  width: 20rem;
+  height: 40px;
+  border: 2px solid $red;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+.thumb {
+  background-color: $red;
+  cursor: pointer;
+  width: 40px;
+  height: 37px;
+  border-radius: 20px;
+}
+
+.slider.green {
+  border-color: $green;
+}
+
+.slider.green .thumb {
+  background-color: $green;
+}
+
+.btn {
+  margin: 0.5rem 0;
+  width: 10rem;
+  padding: 1rem 2rem;
+  border: none;
+  background-color: #eee;
+  color: #222;
+  cursor: pointer;
+  outline: none;
+}

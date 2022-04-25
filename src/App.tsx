@@ -1,9 +1,10 @@
 import { Settings, Timer } from "./components";
 import styles from "./App.module.scss";
-import { useState } from "react";
+import { useContext } from "react";
+import { SettingsContext } from "./contexts/SettingsContext";
 
 function App() {
-  const [showSettings, setShowSettings] = useState(false);
+  const { showSettings } = useContext(SettingsContext);
 
   return (
     <div className={styles.root}>{showSettings ? <Settings /> : <Timer />}</div>
