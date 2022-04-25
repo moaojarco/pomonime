@@ -1,4 +1,4 @@
-export const SettingsButton = ({ props }: any) => {
+export const SettingsButton = (props: any) => {
   return (
     <button {...props} className={"with-text"}>
       <svg

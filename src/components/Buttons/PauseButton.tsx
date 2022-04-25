@@ -1,6 +1,6 @@
-export const PauseButton = () => {
+export const PauseButton = (props: any) => {
   return (
-    <button>
+    <button {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5"

@@ -33,13 +33,28 @@ $green: #4ecf7c;
   background-color: $green;
 }
 
+.btn > svg {
+  width: 25px;
+  margin: 0 10px 0 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
 .btn {
-  margin: 0.5rem 0;
-  width: 10rem;
-  padding: 1rem 2rem;
-  border: none;
-  background-color: #eee;
-  color: #222;
-  cursor: pointer;
-  outline: none;
+  display: flex;
+  align-items: center;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  transition: all 500ms ease;
+  border-radius: 10px;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
