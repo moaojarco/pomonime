@@ -8,7 +8,7 @@ interface SettingsContextProps {
 
 const SettingsProvider = ({ children }: SettingsContextProps) => {
   const [showSettings, setShowSettings] = useState(false);
-  const [workMinutes, setWorkMinutes] = useState(45);
+  const [workMinutes, setWorkMinutes] = useState(30);
   const [breakMinutes, setBreakMinutes] = useState(5);
 
   return (

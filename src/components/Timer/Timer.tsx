@@ -5,8 +5,8 @@ import { PlayButton, PauseButton, SettingsButton } from "..";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
-const red = "#f54e4e";
-const green = "#4aec8c";
+const red = "#ff7168";
+const green = "#36c590";
 
 export const Timer = () => {
   const settingsInfo = useContext(SettingsContext);
