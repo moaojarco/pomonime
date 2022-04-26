@@ -73,37 +73,39 @@ export const Timer = () => {
 
   return (
     <div className={styles.root}>
-      <CircularProgressbar
-        value={percentage}
-        text={`${minutes < 10 ? `0${minutes}` : `${minutes}`}:${seconds}`}
-        styles={buildStyles({
-          textColor: "#222",
-          pathColor: mode === "work" ? red : green,
-          trailColor: "rgba(255, 255, 255, .2)",
-        })}
-      />
-      <div className={styles["buttons-container"]}>
-        {isPaused ? (
-          <PlayButton
-            onClick={() => {
-              setIsPaused(false);
-              isPausedRef.current = false;
-            }}
-          />
-        ) : (
-          <PauseButton
-            onClick={() => {
-              setIsPaused(true);
-              isPausedRef.current = true;
-            }}
-          />
-        )}
-      </div>
-      <div
-        onClick={() => settingsInfo.setShowSettings(true)}
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <SettingsButton />
+      <div>
+        <CircularProgressbar
+          value={percentage}
+          text={`${minutes < 10 ? `0${minutes}` : `${minutes}`}:${seconds}`}
+          styles={buildStyles({
+            textColor: "#eee",
+            pathColor: mode === "work" ? red : green,
+            trailColor: "rgba(255, 255, 255, .2)",
+          })}
+        />
+        <div className={styles["buttons-container"]}>
+          {isPaused ? (
+            <PlayButton
+              onClick={() => {
+                setIsPaused(false);
+                isPausedRef.current = false;
+              }}
+            />
+          ) : (
+            <PauseButton
+              onClick={() => {
+                setIsPaused(true);
+                isPausedRef.current = true;
+              }}
+            />
+          )}
+        </div>
+        <div
+          onClick={() => settingsInfo.setShowSettings(true)}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <SettingsButton />
+        </div>
       </div>
     </div>
   );

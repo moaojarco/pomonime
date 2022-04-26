@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import ReactSlider from "react-slider";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
+import { useTranslation } from "react-i18next";
 
 export const Settings = () => {
   const {
@@ -36,7 +37,7 @@ export const Settings = () => {
             trackClassName={styles.track}
             value={breakMinutes}
             min={1}
-            max={120}
+            max={60}
             onChange={(e) => setBreakMinutes(e)}
           />
           <div>
