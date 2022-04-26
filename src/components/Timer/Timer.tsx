@@ -4,6 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { PlayButton, PauseButton, SettingsButton } from "..";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
+import alarmSound from "../../assets/alarm.mp3";
 
 const red = "#ff7168";
 const green = "#36c590";
@@ -27,7 +28,7 @@ export const Timer = () => {
     const nextMode = modeRef.current === "work" ? "break" : "work";
     const nextSeconds =
       nextMode === "work"
-        ? settingsInfo.workMinutes
+        ? settingsInfo.workMinutes * 60
         : settingsInfo.breakMinutes * 60;
 
     setMode(nextMode);
@@ -49,6 +50,9 @@ export const Timer = () => {
       if (isPausedRef.current) return;
 
       if (secondsLeftRef.current === 0) {
+        const audio = new Audio(alarmSound);
+        audio.volume = 0.4;
+        audio.play();
         return switchMode();
       }
 
