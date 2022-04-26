@@ -2,7 +2,8 @@ import { useContext, useRef, useState } from "react";
 import ReactSlider from "react-slider";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
-import { useTranslation } from "react-i18next";
+import FlorkHm from "../../assets/flork1.png";
+import FlorkOk from "../../assets/flork2.png";
 
 export const Settings = () => {
   const {
@@ -59,16 +60,10 @@ export const Settings = () => {
         </div>
         <div className={styles["right-box"]} ref={rightBoxRef}>
           {workMinutes < breakMinutes && (
-            <img
-              src="https://i.pinimg.com/originals/97/43/60/97436039c19974488717bcf5f2432a00.png"
-              className={styles["img-right"]}
-            />
+            <img src={FlorkHm} className={styles["img-right"]} />
           )}
           {workMinutes > 25 && breakMinutes >= 5 && (
-            <img
-              src="https://i.pinimg.com/originals/d0/56/1a/d0561a6e840e1d0df3df5ec9d7b182d3.png"
-              className={styles["img-right"]}
-            />
+            <img src={FlorkOk} className={styles["img-right"]} />
           )}
         </div>
       </main>
