@@ -1,7 +1,7 @@
 button {
   border: 0;
   background-color: transparent;
-  color: #fff;
+  color: #222;
   display: inline-block;
   width: 50px;
 }
@@ -10,13 +10,13 @@ button.with-text {
   display: flex;
   align-items: center;
   width: auto;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.85);
   padding: 10px 20px;
   transition: all 500ms ease;
   border-radius: 10px;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.7);
   }
 }
 

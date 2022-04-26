@@ -38,7 +38,7 @@ export const Timer = () => {
   }
 
   function tick() {
-    secondsLeftRef.current--;
+    secondsLeftRef.current -= 1;
     setSecondsLeft(secondsLeftRef.current);
   }
 
@@ -77,7 +77,7 @@ export const Timer = () => {
         value={percentage}
         text={`${minutes < 10 ? `0${minutes}` : `${minutes}`}:${seconds}`}
         styles={buildStyles({
-          textColor: "#FFF",
+          textColor: "#222",
           pathColor: mode === "work" ? red : green,
           trailColor: "rgba(255, 255, 255, .2)",
         })}

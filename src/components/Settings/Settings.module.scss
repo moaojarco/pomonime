@@ -60,14 +60,21 @@ label {
 }
 
 .settings-box {
-  background-color: #eee;
-  color: #222;
+  background-color: #222;
+  color: #eee;
   padding: 2rem;
   border-radius: 48px;
   display: flex;
 }
 
+.right-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .right-box > img.img-right {
-  width: 300px;
-  margin-left: 100px;
+  width: auto;
+  height: 200px;
 }

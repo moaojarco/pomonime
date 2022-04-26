@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import ReactSlider from "react-slider";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
@@ -11,6 +11,8 @@ export const Settings = () => {
     setBreakMinutes,
     setShowSettings,
   } = useContext(SettingsContext);
+
+  const rightBoxRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className={styles.root}>
@@ -54,16 +56,16 @@ export const Settings = () => {
             </button>
           </div>
         </div>
-        <div className={styles["right-box"]}>
+        <div className={styles["right-box"]} ref={rightBoxRef}>
           {workMinutes < breakMinutes && (
             <img
-              src="https://stickerly.pstatic.net/sticker_pack/wDBtLCXKddZWHk5eejXg/LHGGF3/2/b669155a-f5f8-45eb-8f5e-39af46091185.png"
+              src="https://i.pinimg.com/originals/97/43/60/97436039c19974488717bcf5f2432a00.png"
               className={styles["img-right"]}
             />
           )}
           {workMinutes > 25 && breakMinutes >= 5 && (
             <img
-              src="https://i0.wp.com/emotioncard.com.br/wp-content/uploads/2017/08/newsletter-naruto3-1.png?resize=500%2C583&ssl=1"
+              src="https://i.pinimg.com/originals/d0/56/1a/d0561a6e840e1d0df3df5ec9d7b182d3.png"
               className={styles["img-right"]}
             />
           )}
