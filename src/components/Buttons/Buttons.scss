@@ -3,7 +3,7 @@ button {
   background-color: transparent;
   color: #222;
   display: inline-block;
-  width: 50px;
+  width: 3.125rem;
 }
 
 button.with-text {
@@ -11,9 +11,9 @@ button.with-text {
   align-items: center;
   width: auto;
   background-color: rgba(0, 0, 0, 0.85);
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   transition: all 500ms ease;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.7);
@@ -25,5 +25,5 @@ button.with-text > span {
 }
 
 button.with-text > svg {
-  width: 36px;
+  width: 2.25rem;
 }
