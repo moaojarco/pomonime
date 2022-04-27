@@ -18,6 +18,13 @@ export const Timer = () => {
   const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
 
+  useEffect(() => {
+    const localWorkMinutes = window.localStorage.getItem("workMinutes");
+    const localBreakMinutes = window.localStorage.getItem("breakMinutes");
+    settingsInfo.setWorkMinutes(localWorkMinutes);
+    settingsInfo.setBreakMinutes(localBreakMinutes);
+  }, []);
+
   function initTimer() {
     secondsLeftRef.current = settingsInfo.workMinutes * 60;
     setSecondsLeft(secondsLeftRef.current);
