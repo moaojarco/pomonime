@@ -18,12 +18,18 @@ export const Timer = () => {
   const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
 
-  useEffect(() => {
-    const localWorkMinutes = window.localStorage.getItem("workMinutes");
-    const localBreakMinutes = window.localStorage.getItem("breakMinutes");
-    settingsInfo.setWorkMinutes(localWorkMinutes);
-    settingsInfo.setBreakMinutes(localBreakMinutes);
-  }, []);
+  const totalSeconds =
+    mode === "work"
+      ? settingsInfo.workMinutes * 60
+      : settingsInfo.breakMinutes * 60;
+
+  const percentage = Math.round((secondsLeft / totalSeconds) * 100);
+  const minutes = Math.floor(secondsLeft / 60);
+  let seconds: string | number = secondsLeft % 60;
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
 
   function initTimer() {
     secondsLeftRef.current = settingsInfo.workMinutes * 60;
@@ -50,6 +56,17 @@ export const Timer = () => {
   }
 
   useEffect(() => {
+    document.title = `Pomonime - ${minutes}:${seconds}`;
+  }, [minutes, seconds]);
+
+  useEffect(() => {
+    const localWorkMinutes = window.localStorage.getItem("workMinutes");
+    const localBreakMinutes = window.localStorage.getItem("breakMinutes");
+    settingsInfo.setWorkMinutes(localWorkMinutes);
+    settingsInfo.setBreakMinutes(localBreakMinutes);
+  }, []);
+
+  useEffect(() => {
     initTimer();
 
     const interval = setInterval(() => {
@@ -68,19 +85,6 @@ export const Timer = () => {
 
     return () => clearInterval(interval);
   }, [settingsInfo]);
-
-  const totalSeconds =
-    mode === "work"
-      ? settingsInfo.workMinutes * 60
-      : settingsInfo.breakMinutes * 60;
-
-  const percentage = Math.round((secondsLeft / totalSeconds) * 100);
-  const minutes = Math.floor(secondsLeft / 60);
-  let seconds: string | number = secondsLeft % 60;
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
 
   return (
     <div className={styles.root}>
