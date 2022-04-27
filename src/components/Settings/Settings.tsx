@@ -29,7 +29,10 @@ export const Settings = () => {
             value={workMinutes}
             min={1}
             max={120}
-            onChange={(e) => setWorkMinutes(e)}
+            onChange={(e) => {
+              window.localStorage.setItem("workMinutes", e);
+              setWorkMinutes(e);
+            }}
           />
           <label>Break Minutes: {`${breakMinutes}:00`}</label>
           <ReactSlider
@@ -39,7 +42,10 @@ export const Settings = () => {
             value={breakMinutes}
             min={1}
             max={60}
-            onChange={(e) => setBreakMinutes(e)}
+            onChange={(e) => {
+              window.localStorage.setItem("breakMinutes", e);
+              setBreakMinutes(e);
+            }}
           />
           <div style={{ marginTop: "30px" }}>
             <h2>Alarm Song</h2>
