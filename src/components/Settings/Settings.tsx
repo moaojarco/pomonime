@@ -4,6 +4,7 @@ import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
 import FlorkHm from "../../assets/flork1.png";
 import FlorkOk from "../../assets/flork2.png";
+import FlorkScare from "../../assets/flork3.png";
 
 export const Settings = () => {
   const {
@@ -71,22 +72,22 @@ export const Settings = () => {
           </div>
         </div>
         <div className={styles["right-box"]} ref={rightBoxRef}>
-          {workMinutes < breakMinutes && (
+          {workMinutes < breakMinutes && breakMinutes > 5 && (
             <div className={styles["flork-container"]}>
               <p>Do you want to rest more than work?</p>
               <img src={FlorkHm} className={styles["img-right"]} />
             </div>
           )}
-          {workMinutes >= 25 && breakMinutes <= 10 && (
+          {workMinutes >= 25 && breakMinutes <= 10 && workMinutes < 70 && (
             <div className={styles["flork-container"]}>
               <p>Perfect!</p>
               <img src={FlorkOk} className={styles["img-right"]} />
             </div>
           )}
-          {workMinutes >= 60 && breakMinutes <= 10 && (
+          {workMinutes >= 60 && breakMinutes <= 10 && workMinutes > 70 && (
             <div className={styles["flork-container"]}>
               <p>Are you sure?!</p>
-              <img src={FlorkOk} className={styles["img-right"]} />
+              <img src={FlorkScare} className={styles["img-right"]} />
             </div>
           )}
         </div>
