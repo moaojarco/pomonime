@@ -53,6 +53,7 @@ label {
   transition: all 500ms ease;
   border-radius: 0.625rem;
   font-size: 1rem;
+  margin: 20px 0 0 0;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.6);
@@ -79,11 +80,26 @@ label {
   width: 100%;
 }
 
-.right-box > img.img-right {
-  width: auto;
-  height: 12.5rem;
+input[name="alarm"] {
+  border-radius: 10px 10px 10px 10px;
+  font-size: 18px;
+  padding: 5px;
+  height: 35px;
+  width: 10rem;
+  margin: 10px 0;
 
-  @media (max-width: 512px) {
-    display: none;
+  &::placeholder {
+    color: #bbb;
+  }
+}
+
+.flork-container {
+  img {
+    width: auto;
+    height: 12.5rem;
+
+    @media (max-width: 512px) {
+      display: none;
+    }
   }
 }

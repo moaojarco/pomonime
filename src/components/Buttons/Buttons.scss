@@ -10,13 +10,13 @@ button.with-text {
   display: flex;
   align-items: center;
   width: auto;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 0.625rem 1.25rem;
   transition: all 500ms ease;
   border-radius: 0.625rem;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.2);
   }
 }
 

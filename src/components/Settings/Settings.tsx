@@ -41,9 +41,15 @@ export const Settings = () => {
             max={60}
             onChange={(e) => setBreakMinutes(e)}
           />
+          <div style={{ marginTop: "30px" }}>
+            <h2>Alarm Song</h2>
+            <input list="alarm" name="alarm" placeholder="Soon..." disabled />
+          </div>
           <div>
             <button
-              onClick={() => setShowSettings(false)}
+              onClick={() => {
+                setShowSettings(false);
+              }}
               className={styles.btn}
             >
               <svg
@@ -60,10 +66,22 @@ export const Settings = () => {
         </div>
         <div className={styles["right-box"]} ref={rightBoxRef}>
           {workMinutes < breakMinutes && (
-            <img src={FlorkHm} className={styles["img-right"]} />
+            <div className={styles["flork-container"]}>
+              <p>Do you want to rest more than work?</p>
+              <img src={FlorkHm} className={styles["img-right"]} />
+            </div>
           )}
-          {workMinutes > 25 && breakMinutes >= 5 && (
-            <img src={FlorkOk} className={styles["img-right"]} />
+          {workMinutes >= 25 && breakMinutes <= 10 && (
+            <div className={styles["flork-container"]}>
+              <p>Perfect!</p>
+              <img src={FlorkOk} className={styles["img-right"]} />
+            </div>
+          )}
+          {workMinutes >= 60 && breakMinutes <= 10 && (
+            <div className={styles["flork-container"]}>
+              <p>Are you sure?!</p>
+              <img src={FlorkOk} className={styles["img-right"]} />
+            </div>
           )}
         </div>
       </main>

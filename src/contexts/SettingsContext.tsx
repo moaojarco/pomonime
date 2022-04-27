@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import alarm from "../assets/audios/wow.mp3";
 
 export const SettingsContext = createContext({} as any);
 
@@ -7,9 +8,11 @@ interface SettingsContextProps {
 }
 
 const SettingsProvider = ({ children }: SettingsContextProps) => {
-  const [showSettings, setShowSettings] = useState(false);
-  const [workMinutes, setWorkMinutes] = useState(30);
-  const [breakMinutes, setBreakMinutes] = useState(5);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
+  const [workMinutes, setWorkMinutes] = useState<number>(25);
+  const [breakMinutes, setBreakMinutes] = useState<number>(5);
+
+  const [alarmSelected, setAlarmSelected] = useState<string>(alarm);
 
   return (
     <SettingsContext.Provider
@@ -20,6 +23,9 @@ const SettingsProvider = ({ children }: SettingsContextProps) => {
         setWorkMinutes,
         breakMinutes,
         setBreakMinutes,
+        alarms,
+        alarmSelected,
+        setAlarmSelected,
       }}
     >
       {children}
