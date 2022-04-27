@@ -23,7 +23,6 @@ const SettingsProvider = ({ children }: SettingsContextProps) => {
         setWorkMinutes,
         breakMinutes,
         setBreakMinutes,
-        alarms,
         alarmSelected,
         setAlarmSelected,
       }}
