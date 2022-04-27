@@ -56,7 +56,7 @@ export const Timer = () => {
   }
 
   useEffect(() => {
-    document.title = `Pomonime - ${minutes}:${seconds}`;
+    document.title = `Pomonime - ${minutes}:${seconds} [${mode}]`;
   }, [minutes, seconds]);
 
   useEffect(() => {
