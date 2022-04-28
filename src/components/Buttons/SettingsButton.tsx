@@ -1,6 +1,6 @@
 export const SettingsButton = (props: any) => {
   return (
-    <button {...props} className={"with-text"}>
+    <button {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5"
@@ -13,7 +13,6 @@ export const SettingsButton = (props: any) => {
           clipRule="evenodd"
         />
       </svg>
-      <span>Settings</span>
     </button>
   );
 };

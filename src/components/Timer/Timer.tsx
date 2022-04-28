@@ -1,7 +1,7 @@
 import styles from "./Timer.module.scss";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { PlayButton, PauseButton, SettingsButton } from "..";
+import { PauseButton, PlayButton, SettingsButton } from "..";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
@@ -18,10 +18,9 @@ export const Timer = () => {
   const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
 
-  const totalSeconds =
-    mode === "work"
-      ? settingsInfo.workMinutes * 60
-      : settingsInfo.breakMinutes * 60;
+  const totalSeconds = mode === "work"
+    ? settingsInfo.workMinutes * 60
+    : settingsInfo.breakMinutes * 60;
 
   const percentage = Math.round((secondsLeft / totalSeconds) * 100);
   const minutes = Math.floor(secondsLeft / 60);
@@ -38,10 +37,9 @@ export const Timer = () => {
 
   function switchMode() {
     const nextMode = modeRef.current === "work" ? "break" : "work";
-    const nextSeconds =
-      nextMode === "work"
-        ? settingsInfo.workMinutes * 60
-        : settingsInfo.breakMinutes * 60;
+    const nextSeconds = nextMode === "work"
+      ? settingsInfo.workMinutes * 60
+      : settingsInfo.breakMinutes * 60;
 
     setMode(nextMode);
     modeRef.current = nextMode;
@@ -99,27 +97,28 @@ export const Timer = () => {
           })}
         />
         <div className={styles["buttons-container"]}>
-          {isPaused ? (
-            <PlayButton
-              onClick={() => {
-                setIsPaused(false);
-                isPausedRef.current = false;
-              }}
-            />
-          ) : (
-            <PauseButton
-              onClick={() => {
-                setIsPaused(true);
-                isPausedRef.current = true;
-              }}
-            />
-          )}
-        </div>
-        <div
-          onClick={() => settingsInfo.setShowSettings(true)}
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <SettingsButton />
+          {isPaused
+            ? (
+              <PlayButton
+                onClick={() => {
+                  setIsPaused(false);
+                  isPausedRef.current = false;
+                }}
+              />
+            )
+            : (
+              <PauseButton
+                onClick={() => {
+                  setIsPaused(true);
+                  isPausedRef.current = true;
+                }}
+              />
+            )}
+          <SettingsButton
+            onClick={() => {
+              settingsInfo.setShowSettings(true);
+            }}
+          />
         </div>
       </div>
     </div>
