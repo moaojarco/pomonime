@@ -5,9 +5,6 @@ import { PauseButton, PlayButton, SettingsButton } from "..";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
-const red = "#ff7168";
-const green = "#36c590";
-
 export const Timer = () => {
   const settingsInfo = useContext(SettingsContext);
   const [isPaused, setIsPaused] = useState<boolean>(true);
@@ -18,9 +15,10 @@ export const Timer = () => {
   const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
 
-  const totalSeconds = mode === "work"
-    ? settingsInfo.workMinutes * 60
-    : settingsInfo.breakMinutes * 60;
+  const totalSeconds =
+    mode === "work"
+      ? settingsInfo.workMinutes * 60
+      : settingsInfo.breakMinutes * 60;
 
   const percentage = Math.round((secondsLeft / totalSeconds) * 100);
   const minutes = Math.floor(secondsLeft / 60);
@@ -37,9 +35,10 @@ export const Timer = () => {
 
   function switchMode() {
     const nextMode = modeRef.current === "work" ? "break" : "work";
-    const nextSeconds = nextMode === "work"
-      ? settingsInfo.workMinutes * 60
-      : settingsInfo.breakMinutes * 60;
+    const nextSeconds =
+      nextMode === "work"
+        ? settingsInfo.workMinutes * 60
+        : settingsInfo.breakMinutes * 60;
 
     setMode(nextMode);
     modeRef.current = nextMode;
@@ -60,8 +59,20 @@ export const Timer = () => {
   useEffect(() => {
     const localWorkMinutes = window.localStorage.getItem("workMinutes");
     const localBreakMinutes = window.localStorage.getItem("breakMinutes");
-    settingsInfo.setWorkMinutes(localWorkMinutes);
-    settingsInfo.setBreakMinutes(localBreakMinutes);
+
+    const localWorkColor = window.localStorage.getItem("workColor");
+    const localBreakColor = window.localStorage.getItem("breakColor");
+
+    settingsInfo.setTimerColor({
+      workColor: localWorkColor ? localWorkColor : "#689dff",
+      breakColor: localBreakColor ? localBreakColor : "#36c590",
+    });
+    settingsInfo.setWorkMinutes(
+      localWorkMinutes ? Number(localWorkMinutes) : 25
+    );
+    settingsInfo.setBreakMinutes(
+      localBreakMinutes ? Number(localBreakMinutes) : 5
+    );
   }, []);
 
   useEffect(() => {
@@ -87,33 +98,37 @@ export const Timer = () => {
   return (
     <div className={styles.root}>
       <div>
-        <CircularProgressbar
-          value={percentage}
-          text={`${minutes < 10 ? `0${minutes}` : `${minutes}`}:${seconds}`}
-          styles={buildStyles({
-            textColor: "#eee",
-            pathColor: mode === "work" ? red : green,
-            trailColor: "rgba(255, 255, 255, .2)",
-          })}
-        />
+        <div className={styles.timer}>
+          <CircularProgressbar
+            value={percentage}
+            text={`${minutes < 10 ? `0${minutes}` : `${minutes}`}:${seconds}`}
+            styles={buildStyles({
+              textColor: "#eee",
+              pathColor:
+                mode === "work"
+                  ? settingsInfo.timerColor.workColor
+                  : settingsInfo.timerColor.breakColor,
+              trailColor: "rgba(255, 255, 255, .2)",
+            })}
+          />
+          <p>{mode === "work" ? "Stay Focused" : "Relax"}</p>
+        </div>
         <div className={styles["buttons-container"]}>
-          {isPaused
-            ? (
-              <PlayButton
-                onClick={() => {
-                  setIsPaused(false);
-                  isPausedRef.current = false;
-                }}
-              />
-            )
-            : (
-              <PauseButton
-                onClick={() => {
-                  setIsPaused(true);
-                  isPausedRef.current = true;
-                }}
-              />
-            )}
+          {isPaused ? (
+            <PlayButton
+              onClick={() => {
+                setIsPaused(false);
+                isPausedRef.current = false;
+              }}
+            />
+          ) : (
+            <PauseButton
+              onClick={() => {
+                setIsPaused(true);
+                isPausedRef.current = true;
+              }}
+            />
+          )}
           <SettingsButton
             onClick={() => {
               settingsInfo.setShowSettings(true);

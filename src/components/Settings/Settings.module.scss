@@ -2,7 +2,7 @@ $red: #ff7168;
 $green: #36c590;
 
 .root {
-  width: 60vw;
+  width: 100vw;
   height: 100vh;
   padding: 1rem;
   text-align: left;
@@ -61,23 +61,17 @@ label {
 }
 
 .settings-box {
-  background-color: #222;
+  background-color: #111;
   color: #eee;
   padding: 2rem;
   border-radius: 3rem;
   display: flex;
-  width: 90vw;
+  width: 50vw;
+  margin: 0 auto;
 
   @media (max-width: 512px) {
     padding: 1rem;
   }
-}
-
-.right-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
 input[name="alarm"] {
@@ -93,13 +87,22 @@ input[name="alarm"] {
   }
 }
 
-.flork-container {
-  img {
-    width: auto;
-    height: 12.5rem;
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px;
+  height: 3rem;
+  width: 3rem;
+  border: 0;
+  cursor: pointer;
+  margin: 10px 0;
+  background-color: transparent;
+}
 
-    @media (max-width: 512px) {
-      display: none;
-    }
-  }
+.colorspicker {
+  display: flex;
+  width: 100%;
+  margin: 1rem 0;
+  justify-content: space-around;
 }

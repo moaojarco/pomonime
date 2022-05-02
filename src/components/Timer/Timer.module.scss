@@ -12,3 +12,17 @@
   display: flex;
   justify-content: center;
 }
+
+.timer {
+  position: relative;
+
+  p {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #eee;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}

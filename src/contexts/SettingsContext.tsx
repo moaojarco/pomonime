@@ -7,10 +7,19 @@ interface SettingsContextProps {
   children: React.ReactNode;
 }
 
+type timerColor = {
+  workColor: string;
+  breakColor: string;
+};
+
 const SettingsProvider = ({ children }: SettingsContextProps) => {
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [workMinutes, setWorkMinutes] = useState<number>(25);
   const [breakMinutes, setBreakMinutes] = useState<number>(5);
+  const [timerColor, setTimerColor] = useState<timerColor>({
+    workColor: "#689dff",
+    breakColor: "#36c590",
+  });
 
   const [alarmSelected, setAlarmSelected] = useState<string>(alarm);
 
@@ -25,6 +34,8 @@ const SettingsProvider = ({ children }: SettingsContextProps) => {
         setBreakMinutes,
         alarmSelected,
         setAlarmSelected,
+        timerColor,
+        setTimerColor,
       }}
     >
       {children}

@@ -2,9 +2,6 @@ import { useContext, useRef, useState } from "react";
 import ReactSlider from "react-slider";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
-import FlorkHm from "../../assets/flork1.png";
-import FlorkOk from "../../assets/flork2.png";
-import FlorkScare from "../../assets/flork3.png";
 
 export const Settings = () => {
   const {
@@ -13,9 +10,9 @@ export const Settings = () => {
     breakMinutes,
     setBreakMinutes,
     setShowSettings,
+    timerColor,
+    setTimerColor,
   } = useContext(SettingsContext);
-
-  const rightBoxRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className={styles.root}>
@@ -49,8 +46,31 @@ export const Settings = () => {
             }}
           />
           <div style={{ marginTop: "30px" }}>
-            <h2>Alarm Song</h2>
-            <input list="alarm" name="alarm" placeholder="Soon..." disabled />
+            <h1>Timer Color</h1>
+            <div className={styles.colorspicker}>
+              <div>
+                <h2>Work</h2>
+                <input
+                  type="color"
+                  value={timerColor.workColor}
+                  onChange={(e) => {
+                    window.localStorage.setItem("workColor", e.target.value);
+                    setTimerColor({ ...timerColor, workColor: e.target.value });
+                  }}
+                />
+              </div>
+              <div>
+                <h2>Break</h2>
+                <input
+                  type="color"
+                  value={timerColor.breakColor}
+                  onChange={(e) => {
+                    window.localStorage.setItem("breakColor", e.target.value);
+                    setTimerColor(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <div>
             <button
@@ -70,26 +90,6 @@ export const Settings = () => {
               Save
             </button>
           </div>
-        </div>
-        <div className={styles["right-box"]} ref={rightBoxRef}>
-          {workMinutes < breakMinutes && breakMinutes > 5 && (
-            <div className={styles["flork-container"]}>
-              <p>Do you want to rest more than work?</p>
-              <img src={FlorkHm} className={styles["img-right"]} />
-            </div>
-          )}
-          {workMinutes >= 25 && breakMinutes <= 10 && workMinutes < 70 && (
-            <div className={styles["flork-container"]}>
-              <p>Perfect!</p>
-              <img src={FlorkOk} className={styles["img-right"]} />
-            </div>
-          )}
-          {workMinutes >= 60 && breakMinutes <= 10 && workMinutes > 70 && (
-            <div className={styles["flork-container"]}>
-              <p>Are you sure?!</p>
-              <img src={FlorkScare} className={styles["img-right"]} />
-            </div>
-          )}
         </div>
       </main>
     </div>
