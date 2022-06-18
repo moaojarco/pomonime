@@ -18,35 +18,34 @@ export const Settings = () => {
     <div className={styles.root}>
       <main className={styles["settings-box"]}>
         <div>
-          <h1>Settings</h1>
-          <label>Work Minutes: {`${workMinutes}:00`}</label>
-          <ReactSlider
-            className={styles.slider}
-            thumbClassName={styles.thumb}
-            trackClassName={styles.track}
-            value={workMinutes}
-            min={1}
-            max={120}
-            onChange={(e) => {
-              window.localStorage.setItem("workMinutes", e);
-              setWorkMinutes(e);
-            }}
-          />
-          <label>Break Minutes: {`${breakMinutes}:00`}</label>
-          <ReactSlider
-            className={`${styles.slider} ${styles.green}`}
-            thumbClassName={styles.thumb}
-            trackClassName={styles.track}
-            value={breakMinutes}
-            min={1}
-            max={60}
-            onChange={(e) => {
-              window.localStorage.setItem("breakMinutes", e);
-              setBreakMinutes(e);
-            }}
-          />
+          <h1>Timer Settings</h1>
+          <div style={{ display: "flex" }}>
+          <div>
+            <label>Work Minutes</label>
+            <input
+              className={styles["input-base"]}
+              type="number"
+              onChange={(e) => {
+                setWorkMinutes(e.target.value);
+                window.localStorage.setItem("workMinutes", e.target.value);
+              }}
+            />
+          </div>
+          <div style={{marginLeft: "5rem"}}>
+            <label>Break Minutes</label>
+            <input
+              className={styles["input-base"]}
+              type="number"
+              onChange={(e) => {
+                setBreakMinutes(e.target.value);
+                window.localStorage.setItem("breakMinutes", e.target.value);
+              }}
+            />
+            </div>
+          </div>
+
           <div style={{ marginTop: "30px" }}>
-            <h1>Timer Color</h1>
+            <h1>Colors</h1>
             <div className={styles.colorspicker}>
               <div>
                 <h2>Work</h2>
