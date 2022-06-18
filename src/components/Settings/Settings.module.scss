@@ -93,7 +93,12 @@ input[name="alarm"] {
   border-radius: 8px;
   border: none;
   font-size: 1.25rem; 
+  max-width: 70px; 
  
+  &::placeholder {
+    color: #888;
+  }
+
   &:focus {
     outline: none;
   }

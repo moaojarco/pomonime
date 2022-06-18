@@ -20,27 +20,33 @@ export const Settings = () => {
         <div>
           <h1>Timer Settings</h1>
           <div style={{ display: "flex" }}>
-          <div>
-            <label>Work Minutes</label>
-            <input
-              className={styles["input-base"]}
-              type="number"
-              onChange={(e) => {
-                setWorkMinutes(e.target.value);
-                window.localStorage.setItem("workMinutes", e.target.value);
-              }}
-            />
-          </div>
-          <div style={{marginLeft: "5rem"}}>
-            <label>Break Minutes</label>
-            <input
-              className={styles["input-base"]}
-              type="number"
-              onChange={(e) => {
-                setBreakMinutes(e.target.value);
-                window.localStorage.setItem("breakMinutes", e.target.value);
-              }}
-            />
+            <div>
+              <label>Work Minutes</label>
+              <input
+                className={styles["input-base"]}
+                type="number"
+                placeholder={`${window.localStorage.getItem(
+                  "workMinutes"
+                )}`}
+                onChange={(e) => {
+                  setWorkMinutes(e.target.value);
+                  window.localStorage.setItem("workMinutes", e.target.value);
+                }}
+              />
+            </div>
+            <div style={{ marginLeft: "5rem" }}>
+              <label>Break Minutes</label>
+              <input
+                className={styles["input-base"]}
+                type="number"
+                placeholder={`${window.localStorage.getItem(
+                  "breakMinutes"
+                )}`}
+                onChange={(e) => {
+                  setBreakMinutes(e.target.value);
+                  window.localStorage.setItem("breakMinutes", e.target.value);
+                }}
+              />
             </div>
           </div>
 
