@@ -1,18 +1,20 @@
 import { useContext, useRef, useState } from "react";
-import ReactSlider from "react-slider";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
 
 export const Settings = () => {
   const {
-    workMinutes,
     setWorkMinutes,
-    breakMinutes,
     setBreakMinutes,
     setShowSettings,
     timerColor,
     setTimerColor,
+    background,
+    setBackground,
   } = useContext(SettingsContext);
+
+  const [file, setFile] = useState<any>();
+  const fReader = new FileReader();
 
   return (
     <div className={styles.root}>
@@ -25,9 +27,7 @@ export const Settings = () => {
               <input
                 className={styles["input-base"]}
                 type="number"
-                placeholder={`${window.localStorage.getItem(
-                  "workMinutes"
-                )}`}
+                placeholder={`${window.localStorage.getItem("workMinutes")}`}
                 onChange={(e) => {
                   setWorkMinutes(e.target.value);
                   window.localStorage.setItem("workMinutes", e.target.value);
@@ -39,9 +39,7 @@ export const Settings = () => {
               <input
                 className={styles["input-base"]}
                 type="number"
-                placeholder={`${window.localStorage.getItem(
-                  "breakMinutes"
-                )}`}
+                placeholder={`${window.localStorage.getItem("breakMinutes")}`}
                 onChange={(e) => {
                   setBreakMinutes(e.target.value);
                   window.localStorage.setItem("breakMinutes", e.target.value);
@@ -75,6 +73,28 @@ export const Settings = () => {
                   }}
                 />
               </div>
+            </div>
+            <div>
+              <h1>Background</h1>
+              <input
+                type="file"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setFile(e.target.files[0]);
+                  }
+                }}
+              />
+              <button
+                onClick={() => {
+                  fReader.onload = () => {
+                    setBackground(fReader.result);
+                    window.localStorage.setItem("background", fReader.result);
+                  };
+                  fReader.readAsDataURL(file);
+                }}
+              >
+                Submit
+              </button>
             </div>
           </div>
           <div>

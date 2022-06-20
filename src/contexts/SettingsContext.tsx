@@ -20,6 +20,7 @@ const SettingsProvider = ({ children }: SettingsContextProps) => {
     workColor: "#689dff",
     breakColor: "#36c590",
   });
+  const [background, setBackground] = useState<string>(""); 
 
   const [alarmSelected, setAlarmSelected] = useState<string>(alarm);
 
@@ -36,6 +37,8 @@ const SettingsProvider = ({ children }: SettingsContextProps) => {
         setAlarmSelected,
         timerColor,
         setTimerColor,
+        background,
+        setBackground
       }}
     >
       {children}
