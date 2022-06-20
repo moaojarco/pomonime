@@ -84,23 +84,17 @@ export const Settings = () => {
                   }
                 }}
               />
-              <button
-                onClick={() => {
-                  fReader.onload = () => {
-                    setBackground(fReader.result);
-                    window.localStorage.setItem("background", fReader.result);
-                  };
-                  fReader.readAsDataURL(file);
-                }}
-              >
-                Submit
-              </button>
             </div>
           </div>
           <div>
             <button
               onClick={() => {
                 setShowSettings(false);
+                  fReader.onload = () => {
+                    setBackground(fReader.result);
+                      window.localStorage.setItem("background", fReader.result as string) 
+                  };
+                  fReader.readAsDataURL(file);
               }}
               className={styles.btn}
             >
