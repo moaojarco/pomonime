@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import styles from "./Settings.module.scss";
 
@@ -9,7 +9,6 @@ export const Settings = () => {
     setShowSettings,
     timerColor,
     setTimerColor,
-    background,
     setBackground,
   } = useContext(SettingsContext);
 
